@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 export  default  class HeaderMenu extends Component{
   render() {
     return (
       <ul className="header__primary">
-        <li><a href="index.html">TRANG CHỦ</a></li>
-        <li><a href="about-us.html">GIỚI THIỆU</a></li>
-        <li className="header__primary__product"><a href="list.html">SẢN PHẨM</a>
+        <li><Link to="/home">TRANG CHỦ</Link></li>
+        <li><Link to="/about">GIỚI THIỆU</Link></li>
+        <li className="header__primary__product"><Link to="/list">SẢN PHẨM</Link>
           <div className="menu-product">
             <div className="menu-product__item"><h6 className="menu-product__item__title">DƯỠNG DA</h6>
               <div className="menu-product__item__list"><p>Áo khoác</p>
@@ -43,10 +44,11 @@ export  default  class HeaderMenu extends Component{
             </div>
           </div>
         </li>
-        <li><a href="blog.html">TIN TỨC</a></li>
-        <li><a href="contact.html">BẢN ĐỒ</a></li>
-        <li><a href="register.html">ĐĂNG KÝ</a></li>
+        <li><Link to="/blog">TIN TỨC</Link></li>
+        <li><Link to="/contact">BẢN ĐỒ</Link></li>
+        <li><Link to="/register">ĐĂNG KÝ</Link></li>
       </ul>
+      
     );
   }
 }
