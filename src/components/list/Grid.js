@@ -4,16 +4,16 @@ import KindProducts from "./KindProducts";
 import TagProducts from "./TagProducts";
 import Intro from './Intro'
 import SideBar from './SideBar'
-import ListContent from "../../containers/list/ListContent";
+import GridContent from "../../containers/grid/GridContent";
 
-export default class List extends Component {
+export default class Grid extends Component {
   render() {
     return (
       <div>
         <Intro/>
         <div className="container gridpage">
         <SideBar/>
-        <ListContent/>
+        <GridContent/>
         </div>
         <KindProducts/>
       </div>
