@@ -5,7 +5,7 @@ export  default  class HeaderMenu extends Component{
   render() {
     return (
       <ul className="header__primary">
-        <li><Link to="/home">TRANG CHỦ</Link></li>
+        <li><Link to="/">TRANG CHỦ</Link></li>
         <li><Link to="/about">GIỚI THIỆU</Link></li>
         <li className="header__primary__product"><Link to="/list">SẢN PHẨM</Link>
           <div className="menu-product">

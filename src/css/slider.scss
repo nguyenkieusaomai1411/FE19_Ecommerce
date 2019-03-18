@@ -1,0 +1,23 @@
+.slides {
+  position: relative;
+}
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  z-index: 999;
+  background: #6f42c1;
+  zoom: 200%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.slick-prev {
+  left: 5%;
+}
+.slick-next {
+  right: 5%;
+}
+
+/*.slick-slide{*/
+  /*padding: 20px;*/
+/*}*/

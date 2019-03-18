@@ -1,4 +1,5 @@
-import Request from "../common/Axios";
+import Request, {apiURL} from "../common/Axios";
+import * as axios from 'axios';
 
 class ProductService {
   static createProduct(data) {
@@ -9,8 +10,16 @@ class ProductService {
     return Request.get(`products/${id}`);
   }
 
-  static getAllProducts()  {
-    return Request.get("products");
+  static getBestProducts() {
+    return Request.get(`${apiURL}/products`);
+  }
+
+  static getNewProducts() {
+    return Request.get(`${apiURL}/products_new`);
+  }
+
+  static getHotProducts() {
+    return Request.get(`${apiURL}/products_hot`);
   }
 
   static updateProduct(id, data) {

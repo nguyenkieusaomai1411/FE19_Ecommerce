@@ -1,7 +1,6 @@
 import * as axios from "axios";
 
-const apiURL = "http://5c19c81e1bf6300013c7dea4.mockapi.io/";
-
+export const apiURL = "http://5c19c81e1bf6300013c7dea4.mockapi.io/";
 class Request {
   static sendRequest(config) {
     config.headers = {
@@ -32,17 +31,10 @@ class Request {
     });
   }
 
-  static get(url, params, customAPIURL) {
-    const convertArgs = this.convertArgs(params, customAPIURL);
-    params = convertArgs.params;
-    customAPIURL = convertArgs.customAPIURL;
-    const config = {
-      method: "get",
-      baseURL: customAPIURL || apiURL,
-      url,
-      params
-    };
-    return this.sendRequest(config);
+  static get = async (url)=> {
+    let response = await axios(url);
+    let result = await response;
+    return result;
   }
 
   static post(url, data, customAPIURL) {
