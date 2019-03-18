@@ -3,7 +3,11 @@ import {combineReducers} from 'redux'
 import ProductService from "../service/ProductService";
 import React from "react";
 
-let initSate = {}
+let initSate = {
+  products_new: [],
+  products_hot: [],
+  products_best: []
+}
 
 export const productReducer = (state=initSate, action) =>{
   switch (action.type) {

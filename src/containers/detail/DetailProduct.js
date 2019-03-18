@@ -1,7 +1,11 @@
 import React,{Component} from 'react';
+import {connect} from "react-redux";
+// import {Link} from 'react-router-dom'
 
-export default class DetailProduct extends Component{
+class DetailProduct extends Component{
   render() {
+    const {id,products} = this.props;
+    let product=products[id-1];
     return (
       <div className="detail-product">
         <div className="detail-img">
@@ -9,26 +13,20 @@ export default class DetailProduct extends Component{
             src="../img/detail/Layer 80.jpg"/><img src="../img/detail/Layer 82.jpg"/><img
             src="../img/detail/Layer 83.jpg"/><img src="../img/detail/Layer 84.jpg"/><img
             src="../img/detail/03_Detail_07.jpg"/></div>
-          <img className="detail-img__product" src="../img/detail/Layer 79.jpg"/></div>
-        <div className="detail-description"><h5 className="detail-description__name">Lắc tay TyFFanny xu hướng mới
-          nhất</h5>
-          <p className="detail-description__code">Tyffancy ms 3201</p>
-          <p className="detail-description__price">955.000đ<span
-            className="detail-description__price-old"> 999.000đ</span>
+          <img className="detail-img__product" src={product && product.img}/></div>
+        <div className="detail-description"><h5 className="detail-description__name">{product && product.name}</h5>
+          <p className="detail-description__code">{product && product.brand}</p>
+          <p className="detail-description__price">{product && product.new_price}đ<span
+            className="detail-description__price-old"> {product && product.old_price}đ</span>
           </p>
-          <p className="detail-description__text">Không thể phủ nhận, thời trang và phong cách chính là “tuyên ngôn”
-            không
-            lời mạnh mẽ nhất của mỗi người phụ nữ. Do đó, việc mua sắm thời trang trở thành niềm vui, và có khi là
-            nguồn cảm hứng vô tận để phái đẹp sống vui, sống đẹp hơn trong mắt nửa còn lại của thế giới. Để F5 tủ đồ
-            của mình trước những xu hướng ngày một đa dạng hơn trong thế giới thời trang, nhiều chị em không ngần
-            ngại chi tiêu “mạnh tay” để sở hữu những
+          <p className="detail-description__text">{product&& product.content}
             món đồ yêu thích.</p>
           <form className="detail-description__form">
-            <div><label>MÀU SẮC</label><select>
-              <option> Màu bạc</option>
+            <div><label>TÔNG MÀU</label><select>
+              {product&&product.color.map(item=><option>{item}</option>)}
             </select></div>
             <div><label>Size</label><select>
-              <option>12</option>
+              {product&&product.size.map(item=><option>{item}</option>)}
             </select></div>
             <div className="product__detail__button">
               <button>MUA HÀNG</button>
@@ -76,3 +74,9 @@ export default class DetailProduct extends Component{
   }
 
 }
+const mapStateToProps = (state) => {
+  return {
+    products: state.products.products_hot,
+  }
+}
+export default connect(mapStateToProps, null)(DetailProduct)

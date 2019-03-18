@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-export default class ProductItem extends Component{
+export default class ProductItem extends Component {
   render() {
-    const {id,img,name,price,content} = this.props;
+    const {id, img, name, price, content} = this.props;
+    const link=`/detail/${id}`
     return (
-      <div className="product"><img src={img}/>
+      <div className="product">
+        <Link to={link}>
+          <img src={img}/>
+        </Link>
         <div className="product__detail">
           <div className="product__detail__type">{name}</div>
           <div className="product__detail__buy"><i className="fa fa-heart"></i><i className="fa fa-heart"></i><i

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import Paging from "../../components/list/Paging";
 import {connect} from 'react-redux';
 import ProductItem from "../../components/list/ProductItem";
+import GridProduct from "../../components/list/GridProduct";
 
 class GridContent extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class GridContent extends Component {
           }
           <div className="grid-content__body">
             {products && currentProducts.map((product) =>
-              <GridProduct key={product.id} img={product.img} name={product.name} brand={product.brand} new_price={product.new_price} old_price={product.old_price}/>
+              <GridProduct key={product.id} id={product.id} img={product.img} name={product.name} brand={product.brand} new_price={product.new_price} old_price={product.old_price}/>
             )}
           </div>
           {products && <Paging pageNumbers={pageNumbers} handleClick={this.handleClickPageNumber} degrease={this.degrease} increase={this.increase}/>}

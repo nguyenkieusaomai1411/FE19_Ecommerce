@@ -61,7 +61,7 @@ class ListContent extends Component {
           }
           <div className="list-content__body">
             {currentProducts.map((product) =>
-              <ProductItem key={product.id} img={product.img} name={product.name} content={product.content} price={product.new_price}/>
+              <ProductItem key={product.id} id={product.id} img={product.img} name={product.name} content={product.content} price={product.new_price}/>
             )}
           </div>
           {products && <Paging pageNumbers={pageNumbers} handleClick={this.handleClickPageNumber} degrease={this.degrease} increase={this.increase}/>}
@@ -69,19 +69,10 @@ class ListContent extends Component {
       );
     }
   }
-
-  const
-  mapStateToProps = (state) => {
+  const mapStateToProps = (state) => {
     return {
       products: state.products.products_hot,
     }
   }
 
-  export
-  default
-
-  connect(mapStateToProps)
-
-(
-  ListContent
-)
+  export default connect(mapStateToProps)(ListContent)
