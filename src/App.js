@@ -18,6 +18,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/home/Home';
 import About from './components/about/About';
 import PageDetal from "./components/detail/PageDetal";
+import {saveState} from "./common/LocalSave";
 
 const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -52,3 +53,7 @@ export default class App extends Component {
     );
   }
 }
+
+//theo dõi sự thay đổi của store, cập nhật vào localstorage
+store.subscribe(() => saveState("shoppingCart", store.getState()["products"]["addedItems"]));
+store.subscribe(() => saveState("total", store.getState()["products"]["total"]));

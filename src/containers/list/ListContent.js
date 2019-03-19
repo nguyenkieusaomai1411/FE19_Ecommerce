@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import Paging from "../../components/list/Paging";
 import {connect} from 'react-redux';
 import ProductItem from "../../components/list/ProductItem";
+import {addToCart} from "../../actions/ActionCreaters";
 
 class ListContent extends Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class ListContent extends Component {
           }
           <div className="list-content__body">
             {currentProducts.map((product) =>
-              <ProductItem key={product.id} id={product.id} img={product.img} name={product.name} content={product.content} price={product.new_price}/>
+              <ProductItem clickBuy={(e)=>this.props.addToCart(product.id)} key={product.id} id={product.id} img={product.img} name={product.name} content={product.content} price={product.new_price}/>
             )}
           </div>
           {products && <Paging pageNumbers={pageNumbers} handleClick={this.handleClickPageNumber} degrease={this.degrease} increase={this.increase}/>}
@@ -75,4 +76,10 @@ class ListContent extends Component {
     }
   }
 
-  export default connect(mapStateToProps)(ListContent)
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    addToCart:(id)=>dispatch(addToCart(id))
+  }
+}
+
+  export default connect(mapStateToProps,mapDispatchToProps)(ListContent)
