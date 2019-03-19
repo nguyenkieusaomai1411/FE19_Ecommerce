@@ -1,8 +1,13 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 export const ProductItem = ({id,brand,name,old_price,new_price,img}) =>{
+  const link=`/detail/${id}`
   return(
-    <div className="product"><img className="product__img" src={img}/>
+    <div className="product">
+      <Link to={link}>
+      <img className="product__img" src={img}/>
+      </Link>
       <div className="product__detail">
         <div className="product__detail__type">{brand}</div>
         <div className="product__detail__name">{name}</div>
