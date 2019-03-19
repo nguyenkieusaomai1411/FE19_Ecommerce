@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
 import {connect} from "react-redux";
-// import {Link} from 'react-router-dom'
+import {addToCart} from "../../actions/ActionCreaters";
 
 class DetailProduct extends Component{
+
   render() {
-    const {id,products} = this.props;
+    const {id,products,addToCart} = this.props;
     let product=products[id-1];
     return (
       <div className="detail-product">
@@ -21,7 +22,7 @@ class DetailProduct extends Component{
           </p>
           <p className="detail-description__text">{product&& product.content}
             món đồ yêu thích.</p>
-          <form className="detail-description__form">
+          <form className="detail-description__form" onSubmit={event => event.preventDefault()}>
             <div><label>TÔNG MÀU</label><select>
               {product&&product.color.map(item=><option>{item}</option>)}
             </select></div>
@@ -29,7 +30,7 @@ class DetailProduct extends Component{
               {product&&product.size.map(item=><option>{item}</option>)}
             </select></div>
             <div className="product__detail__button">
-              <button>MUA HÀNG</button>
+              <button onClick={(e)=>this.props.addToCart(id)}>MUA HÀNG</button>
               <button><i className="fa fa-heart"></i></button>
               <button><i className="fa fa-refresh"></i></button>
             </div>
@@ -74,9 +75,17 @@ class DetailProduct extends Component{
   }
 
 }
+
 const mapStateToProps = (state) => {
   return {
     products: state.products.products_hot,
   }
 }
-export default connect(mapStateToProps, null)(DetailProduct)
+
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    addToCart:(id)=>dispatch(addToCart(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailProduct)

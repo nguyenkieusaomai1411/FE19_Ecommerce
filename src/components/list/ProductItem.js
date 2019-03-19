@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 export default class ProductItem extends Component {
   render() {
-    const {id, img, name, price, content} = this.props;
+    const {id, img, name, price, content,clickBuy} = this.props;
     const link=`/detail/${id}`
     return (
       <div className="product">
@@ -17,7 +17,7 @@ export default class ProductItem extends Component {
           <p className="product__detail__text">{content}</p>
           <p className="product__detail__price">{price}</p>
           <div className="product__detail__button">
-            <button>MUA HÀNG</button>
+            <button onClick={clickBuy}>MUA HÀNG</button>
             <button><i className="fa fa-heart"></i></button>
             <button><i className="fa fa-refresh"></i></button>
           </div>

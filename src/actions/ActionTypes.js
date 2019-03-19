@@ -1,1 +1,3 @@
 export const PRODUCT_FETCH_SUCCESS = 'PRODUCT_FETCH_SUCCESS'
+
+export const ADD_TO_CART = 'ADD_TO_CART'
