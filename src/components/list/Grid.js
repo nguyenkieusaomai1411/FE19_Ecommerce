@@ -4,7 +4,7 @@ import KindProducts from "./KindProducts";
 import TagProducts from "./TagProducts";
 import Intro from './Intro'
 import SideBar from './SideBar'
-import GridContent from "../../containers/grid/GridContent";
+import GridContent from "./../../containers/grid/GridContent";
 
 export default class Grid extends Component {
   render() {

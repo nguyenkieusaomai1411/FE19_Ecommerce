@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Paging from "../../components/list/Paging";
 import {connect} from 'react-redux';
-import ProductItem from "../../components/list/ProductItem";
 import GridProduct from "../../components/list/GridProduct";
 
 class GridContent extends Component {
@@ -39,7 +38,6 @@ class GridContent extends Component {
     render()
     {
       const {products} = this.props;
-      console.log(products);
       const {currentPage, limit,maxPage} = this.state;
       const pageNumbers = [];
       let currentProducts = [];
@@ -58,12 +56,12 @@ class GridContent extends Component {
       }
 
       return (
-        <div className="grid-content">
+        <div className="list-content">
           {products && <Paging pageNumbers={pageNumbers} handleClick={this.handleClickPageNumber} degrease={this.degrease} increase={this.increase}/>
           }
           <div className="grid-content__body">
-            {products && currentProducts.map((product) =>
-              <GridProduct key={product.id} id={product.id} img={product.img} name={product.name} brand={product.brand} new_price={product.new_price} old_price={product.old_price}/>
+            {currentProducts.map((product) =>
+              <GridProduct key={product.id} img={product.img} brand={product.brand} name={product.name} new_price={product.new_price} old_price={product.old_price}/>
             )}
           </div>
           {products && <Paging pageNumbers={pageNumbers} handleClick={this.handleClickPageNumber} degrease={this.degrease} increase={this.increase}/>}
@@ -72,18 +70,12 @@ class GridContent extends Component {
     }
   }
 
-  const
-  mapStateToProps = (state) => {
+  const mapStateToProps = (state) => {
     return {
       products: state.products.products_hot,
     }
   }
-
-  export
-  default
-
-  connect(mapStateToProps)
-
+  export default connect(mapStateToProps)
 (
   GridContent
 )
