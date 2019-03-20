@@ -19,7 +19,18 @@ import Home from './components/home/Home';
 import About from './components/about/About';
 import PageDetal from "./components/detail/PageDetal";
 import {saveState} from "./common/LocalSave";
+<<<<<<< HEAD
 import PageCart from "./components/cart/PageCart";
+=======
+import Admin from "./components/admin/Admin";
+import BillAdmin from "./components/admin/BillAdmin";
+import CustomerAdmin from "./components/admin/CustomerAdmin";
+import ProductAdmin from "./components/admin/ProductAdmin";
+import SignIn from './components/admin/SignIn';
+import ProductExist from "./components/admin/ProductExist";
+import ProductSold from "./components/admin/ProductSold";
+
+>>>>>>> admin
 
 const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -46,7 +57,17 @@ export default class App extends Component {
               <Route path='/blog' component={Blog}/>
               <Route path='/register' component={Register}/>
               <Route path='/detail/:id' component={PageDetal}/>
+<<<<<<< HEAD
               <Route path='/cart' component={PageCart}/>
+=======
+              <Route path='/admin_signin' component={SignIn}/>
+              <Route path='/admin' component={Admin}/>
+              <Route path='/admin_customer' component={CustomerAdmin}/>
+              <Route path='/admin_product' component={ProductAdmin}/>
+              <Route path='/admin_bill' component={BillAdmin}/>
+              <Route path='/admin_product_exist' component={ProductExist}/>
+              <Route path='/admin_product_sold' component={ProductSold}/>
+>>>>>>> admin
             </Switch>
             <Footer/>
           </div>
