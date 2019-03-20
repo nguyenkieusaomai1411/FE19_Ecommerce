@@ -24,6 +24,7 @@ export default class ContactForm extends Component {
     let data = {"cart": addedItems, personal: {name, phone, address}};
     OrderService.postOrder(data);
     // this.getName.value = "";
+    localStorage.clear();
   }
 
   render() {
