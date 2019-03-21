@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import Paging from "../../components/list/Paging";
 import {connect} from 'react-redux';
 import ProductItem from "../../components/list/ProductItem";
-import {addToCart} from "../../actions/ActionCreaters";
 
 class ListContent extends Component {
   constructor(props) {
@@ -39,15 +38,16 @@ class ListContent extends Component {
     render()
     {
       const {products} = this.props;
+      console.log(products);
       const {currentPage, limit,maxPage} = this.state;
       const pageNumbers = [];
-      let currentProducts = [];
+      let currentTodos = [];
 
       if (typeof (products) != "undefined" && products.length > 0) {
         // Logic for displaying todos
         const indexOfLastTodo = currentPage * limit;
         const indexOfFirstTodo = indexOfLastTodo - limit;
-        currentProducts = products.slice(indexOfFirstTodo, indexOfLastTodo);
+        currentTodos = products.slice(indexOfFirstTodo, indexOfLastTodo);
 
         // Logic for displaying page numbers
         for (let i = 1; i <= Math.ceil(products.length / limit); i++) {
@@ -61,8 +61,8 @@ class ListContent extends Component {
           {products && <Paging pageNumbers={pageNumbers} handleClick={this.handleClickPageNumber} degrease={this.degrease} increase={this.increase}/>
           }
           <div className="list-content__body">
-            {currentProducts.map((product) =>
-              <ProductItem clickBuy={(e)=>this.props.addToCart(product.id)} key={product.id} id={product.id} img={product.img} name={product.name} content={product.content} price={product.new_price}/>
+            {products && currentTodos.map((product) =>
+              <ProductItem key={product.id} img={product.img} name={product.name} price={product.new_price}/>
             )}
           </div>
           {products && <Paging pageNumbers={pageNumbers} handleClick={this.handleClickPageNumber} degrease={this.degrease} increase={this.increase}/>}
@@ -70,16 +70,19 @@ class ListContent extends Component {
       );
     }
   }
-  const mapStateToProps = (state) => {
+
+  const
+  mapStateToProps = (state) => {
     return {
-      products: state.products.products_hot,
+      products: state.products.products_new,
     }
   }
 
-const mapDispatchToProps = (dispatch) =>{
-  return {
-    addToCart:(id)=>dispatch(addToCart(id))
-  }
-}
+  export
+  default
 
-  export default connect(mapStateToProps,mapDispatchToProps)(ListContent)
+  connect(mapStateToProps)
+
+(
+  ListContent
+)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HeaderMenu from "./HeaderMemu";
-import HeaderButton from "../../containers/header/HeaderButton";
+import HeaderButton from "./HeaderButton";
 export default class Header extends Component {
   render() {
     return (

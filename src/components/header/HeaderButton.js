@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 
 export default class HeaderButton extends Component{
   render() {
@@ -12,14 +11,10 @@ export default class HeaderButton extends Component{
               className="cart__sum-price__value">0<sup>đ</sup></span></p><a
             className="cart__button" href="shopping-cart.html">GIỎ HÀNG</a></div>
         </button>
-        <button><Link to='/admin_signin'><i className="fa fa-user" style={color}></i></Link></button>
+        <button><a><i className="fa fa-search"></i></a></button>
         <button><a><i className="fa fa-bars"></i></a></button>
       </div>
     );
   }
 
-}
-//-------------
-const color={
-  color: 'black'
 }

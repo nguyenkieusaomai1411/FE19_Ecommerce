@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import Sale from "./Sale";
 import KindProducts from "./KindProducts";
 import TagProducts from "./TagProducts";
-import Intro from './Intro';
-import ListButton from "../home/ListButton";
+import Intro from './Intro'
 
-const SideBar = () => {
-  let arrayButton =["Đồng hồ","Túi","Phụ kiện","Đồng hồ","Giày","Scandal","Áo sơ mi","Nước hoa","Giày","Giày","Scanldal"];
+export default class List extends Component {
+  render() {
     return (
       <div className="sidebar-grid">
         <div className="sidebar-grid__item">
@@ -46,11 +45,23 @@ const SideBar = () => {
         <div className="sidebar-grid__item">
           <h3 className="sidebar-grid__item__header">Tag sản phẩm</h3>
           <div className="sidebar-grid__item__body">
-          <ListButton listButton={arrayButton}/>
+            <button>Đồng hồ</button>
+            <button>Túi</button>
+            <button>Phụ kiện</button>
+            <button>Đồng hồ</button>
+            <button>Túi</button>
+            <button>Giày</button>
+            <button>Sandal</button>
+            <button>Áo Sơ mi</button>
+            <button>Nước hoa</button>
+            <button>Giày</button>
+            <button>Sandal</button>
+            <button>Trẻ em</button>
+            <button>Thời trang nữ</button>
           </div>
         </div>
         <img className="sidebar-grid__banner" src={require("../../img/grid/04_Gird_03.jpg")}/>
       </div>
     );
   }
-export default SideBar
+}

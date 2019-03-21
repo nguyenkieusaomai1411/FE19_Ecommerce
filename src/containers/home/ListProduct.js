@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addToCart} from "../../actions/ActionCreaters";
+import result, {productsAction} from "../../actions/ActionCreaters";
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -39,18 +39,16 @@ class ListProduct extends Component {
       slidesToShow: 6,
       slidesToScroll: 3
     };
-    return (
-      <Slider {...settings}>
-        {products.map(productItem =>
-          <ProductItem clickBuy={this.clickBuy} key={productItem.id} id={productItem.id} name={productItem.name} brand={productItem.brand}
-                       new_price={productItem.new_price} old_price={productItem.old_price} img={productItem.img}/>
-        )}
-      </Slider>
-    )
-  }
-
-  clickBuy = (e) => {
-    this.props.addToCart(e.target.value);
+    if(typeof (products)!="undefined" && products.length>0) {
+      return (
+        <Slider {...settings}>
+          {products.map(productItem =>
+            <ProductItem key={productItem.id} id={productItem.id} name={productItem.name} brand={productItem.brand}
+                         new_price={productItem.new_price} old_price={productItem.old_price} img={productItem.img}/>
+          )}
+        </Slider>
+      )
+    }
   }
 
   render() {
@@ -102,9 +100,4 @@ const mapStateToProps = (state) => {
     productsNew: state.products.products_new,
   }
 }
-const mapDispatchToProps = (dispatch) =>{
-  return {
-    addToCart:(id)=>dispatch(addToCart(id))
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(ListProduct)
+export default connect(mapStateToProps, null)(ListProduct)
