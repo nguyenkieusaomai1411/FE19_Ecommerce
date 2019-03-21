@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 const style ={
   container:{
     paddingTop:"40px"
+  },
+  step_color:{
+    background:'blue'
   }
 }
 export default class OrderSucess extends Component{
@@ -21,8 +24,8 @@ export default class OrderSucess extends Component{
             <div className="step-payment__item__step">Bước 2:</div>
             <div className="step-payment__item__content">Thông tin thanh toán</div>
           </div>
-          <div className="step-payment__item bg-yellow">
-            <div className="step-payment__item__step">Bước 3:</div>
+          <div className="step-payment__item bg-yellow"style={style.step_color}>
+            <div className="step-payment__item__step" >Bước 3:</div>
             <div className="step-payment__item__content">Thông báo kết quả</div>
           </div>
         </div>

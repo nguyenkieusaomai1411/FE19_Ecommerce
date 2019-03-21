@@ -18,7 +18,7 @@ class HeaderButton extends Component {
             <p className="cart__sum-price">Tổng số<span className="cart__sum-price__value">{total||0}</span></p><Link
             className="cart__button" to="/cart">GIỎ HÀNG</Link></div>
         </button>
-        <button><a><i className="fa fa-search"></i></a></button>
+        <button><Link to="/admin"><i className="fa fa-user" style={color}></i></Link></button>
         <button><a><i className="fa fa-bars"></i></a></button>
       </div>
     );
@@ -39,3 +39,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderButton)
+
+const color={
+  color: 'black',
+}

@@ -35,7 +35,7 @@ export default class PageCart extends Component {
             <div className="shopping-cart__button">
               <Link to="/list" style={style.buttonContine}>Tiếp tục mua hàng</Link>
               <button onClick="clearCart();" style={style.buttonDelete}>Xóa</button>
-              <Link to="/order" style={style.buttonOrder}>Điền thông tin</Link>
+              <Link to="/check" style={style.buttonOrder}>Kiểm tra giỏ hàng</Link>
             </div>
           </div>
         </div>

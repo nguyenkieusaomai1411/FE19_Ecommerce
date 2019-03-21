@@ -9,7 +9,31 @@ const style = {
     backgroundColor: "green",
     color: "white",
     marginRight: "5px"
-  }
+  },
+  container:{
+    paddingTop:"40px"
+  },
+  step_color:{
+    background:'blue'
+  },
+  buttonContine:{
+      backgroundColor:"black",
+      marginRight:"10px",
+      padding:"10px",
+      color:"white"
+    },
+    buttonOrder:{
+      backgroundColor:"green",
+      marginRight:"10px",
+      padding:"10px",
+      color:"white"
+    },
+    buttonDelete:{
+      backgroundColor:"green",
+      marginRight:"10px",
+      padding:"12px",
+      color:"white"
+    }
 }
 export default class ContactForm extends Component {
   orderProduct = (e) => {
@@ -29,6 +53,23 @@ export default class ContactForm extends Component {
 
   render() {
     return (
+      <div>
+        <div className="container" style={style.container}>
+        <div className="step-payment">
+          <div className="step-payment__item bg-yellow" >
+            <div className="step-payment__item__step">Bước 1:</div>
+            <div className="step-payment__item__content">Kiểm tra giỏ hàng</div>
+          </div>
+          <div className="step-payment__item bg-yellow" style={style.step_color}>
+            <div className="step-payment__item__step">Bước 2:</div>
+            <div className="step-payment__item__content">Thông tin thanh toán</div>
+          </div>
+          <div className="step-payment__item bg-yellow">
+            <div className="step-payment__item__step" >Bước 3:</div>
+            <div className="step-payment__item__content">Thông báo kết quả</div>
+          </div>
+        </div>
+      </div>
       <div className="register">
         <form className="form" onSubmit={(e)=>e.preventDefault()}>
           <h3 className="form__title">THÔNG TIN CÁ NHÂN</h3>
@@ -46,9 +87,10 @@ export default class ContactForm extends Component {
           </div>
           <div className="form-element form-element__button">
             <Link onClick={this.orderProduct} to="/sucess" style={style.button}>Gửi</Link>
-            <Link to="/cart" style={style.button}>Quay về</Link>
+            <Link to="/check" style={style.button}>Quay về</Link>
           </div>
         </form>
+      </div>
       </div>
     );
   }

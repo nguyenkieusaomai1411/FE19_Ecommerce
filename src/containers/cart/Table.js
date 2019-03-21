@@ -4,9 +4,6 @@ import Itemcart from "../../components/cart/ItemCart";
 import {addQuantity, removeItem, subtractQuantity} from "../../actions/ActionCreaters";
 
 class Table extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
 
   render() {
     const {itemsInCart, removeItem, addQuantity, subQuantity} = this.props;

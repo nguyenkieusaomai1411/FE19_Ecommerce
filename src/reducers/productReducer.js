@@ -1,4 +1,4 @@
-import {ADD_QUANTITY, ADD_TO_CART, PRODUCT_FETCH_SUCCESS, REMOVE_ITEM, SUB_QUANTITY} from "../actions/ActionTypes";
+import {ADD_QUANTITY, ADD_TO_CART, PRODUCT_FETCH_SUCCESS, REMOVE_ITEM, SUB_QUANTITY, FETCH_PRODUCT, ADD_PRODUCT} from "../actions/ActionTypes";
 import {combineReducers} from 'redux'
 import ProductService from "../service/ProductService";
 import React from "react";
@@ -13,11 +13,20 @@ let initSate = {
   products_hot: [],
   products_best: [],
   addedItems:initAddedItems,
-  total: initTotal
+  total: initTotal,
+  // all_product : []
 }
 
 export const productReducer = (state=initSate, action) => {
   switch (action.type) {
+    //admin-----------
+    case FETCH_PRODUCT :
+      return Object.assign({}, state, action.products)
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        all_product : [action.product]
+      }
     case PRODUCT_FETCH_SUCCESS :
       return Object.assign({}, state, action.products)
     case ADD_TO_CART :

@@ -1,6 +1,6 @@
 
 import ProductService from "../service/ProductService";
-import {ADD_QUANTITY, ADD_TO_CART, PRODUCT_FETCH_SUCCESS, REMOVE_ITEM, SUB_QUANTITY} from "./ActionTypes";
+import {ADD_QUANTITY, ADD_TO_CART, PRODUCT_FETCH_SUCCESS, REMOVE_ITEM, SUB_QUANTITY,FETCH_PRODUCT,ADD_PRODUCT} from "./ActionTypes";
 
 export const fetchAllProduct = (products)  =>{
   return ({
@@ -8,7 +8,6 @@ export const fetchAllProduct = (products)  =>{
     products
   })
 }
-
 
 export const addToCart = (id)  =>{
   return ({
@@ -36,5 +35,20 @@ export const addQuantity=(id)=>{
   return{
     type: ADD_QUANTITY,
     id
+  }
+}
+
+//admin----------------
+export const fetchProduct = (products) => {
+  return {
+    type:FETCH_PRODUCT,
+    products
+  }
+}
+//----add-product------------
+export const addProduct = (product) => {
+  return {
+    type:ADD_PRODUCT,
+    product
   }
 }
