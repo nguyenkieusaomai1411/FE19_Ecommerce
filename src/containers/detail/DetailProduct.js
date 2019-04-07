@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
 import {connect} from "react-redux";
 import {addToCart} from "../../actions/ActionCreaters";
+import parse from 'html-react-parser';
 
 class DetailProduct extends Component{
 
   render() {
     const {id,products,addToCart} = this.props;
-    let product=products[id-1];
+    let product= products.find(product=>product.id==id);
     return (
       <div className="detail-product">
         <div className="detail-img">
@@ -20,8 +21,8 @@ class DetailProduct extends Component{
           <p className="detail-description__price">{product && product.new_price}đ<span
             className="detail-description__price-old"> {product && product.old_price}đ</span>
           </p>
-          <p className="detail-description__text">{product&& product.content}
-            món đồ yêu thích.</p>
+          <p className="detail-description__text">{product&& parse(product.content)}
+          </p>
           <form className="detail-description__form" onSubmit={event => event.preventDefault()}>
             <div><label>TÔNG MÀU</label><select>
               {product&&product.color.map(item=><option>{item}</option>)}

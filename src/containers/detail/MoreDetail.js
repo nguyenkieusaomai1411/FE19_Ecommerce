@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import ProductBest from "./ProductBest";
 import {connect} from "react-redux";
 import {MoreDetailItem} from "../../components/detail/MoreDetailItem";
-
+import parse from 'html-react-parser';
 class MoreDetail extends Component {
   render() {
     const {id, products} = this.props;
@@ -16,7 +16,7 @@ class MoreDetail extends Component {
             <p>Thông tin sản phẩm</p>
             <p>Đánh giá</p></div>
           <div className="description-body">
-            {product && product.more.map(item=><MoreDetailItem content={item.content} img={item.img} title={item.title}/>)}
+            {product && parse(product.more)}
           </div>
         </div>
         <ProductBest/>
